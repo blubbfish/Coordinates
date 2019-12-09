@@ -1,15 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
-namespace CoordinateSharp
-{
-    internal partial class MeeusTables
+namespace CoordinateSharp {
+  internal partial class MeeusTables {
+    //Ch 47
+    private static readonly Double[] Table47A_Arguments = new Double[]
     {
-        //Ch 47
-        private static double[] Table47A_Arguments = new double[]
-        {
             0,0,1,0,
             2,0,-1,0,
             2,0,0,0,
@@ -71,9 +66,9 @@ namespace CoordinateSharp
             1,1,-1,0,
             2,0,3,0,
             2,0,-1,-2
-        };
-        private static double[] Table47B_Arguments = new double[]
-        {
+    };
+    private static readonly Double[] Table47B_Arguments = new Double[]
+    {
             0,0,0,1,
             0,0,1,1,
             0,0,1,-1,
@@ -135,9 +130,9 @@ namespace CoordinateSharp
             1,0,-1,-1,
             4,-1,0,-1,
             2,-2,0,1,
-        };
-        private static double[] Table47A_El_Er = new double[]
-        {
+    };
+    private static readonly Double[] Table47A_El_Er = new Double[]
+    {
             //El
             6288774, 1274027,658314,213618,-185116,-114332,58793,57066,53322,45758,
             -40923,-34720,-30383,15327,-12528,10980,10675,10034,8548,-7888,-6766,-5163,
@@ -150,72 +145,58 @@ namespace CoordinateSharp
             -12831,-10445,-11650,14403,-7003,0,10056,6322,-9884,5751,0,-4950,4130,0,-3958,0,3258,
             2616,-1897,-2117,2354,0,0,-1423,-1117,-1571,-1739,0,-4421,0,0,0,0,1165,0,0,8752
 
-        };
-        private static double[] Table47B_Eb = new double[]
-        {
+    };
+    private static readonly Double[] Table47B_Eb = new Double[]
+    {
             5128122,280602,277693,173237,55413,46271,32573,17198,9266,8822,
             8216,4324,4200,-3359,2463,2211,2065,-1870,1828,-1794,-1749,-1565,-1491,
             -1475,-1410,-1344,-1335,1107,1021,833,
 
             777,671,607,596,491,-451,439,422,421,-366,-351,331,315,302,-283,-229,
             223,223,-220,-220,-185,181,-177,176,166,-164,132,-119,115,107
-        };
-        private static double Get_Table47A_Values(double[] values, int l, double t, bool sine)
-        {
-            //sine true returns El
-            //sine false return Er
-            //Er values start at 60 in the Table47A_El_Er array.
+    };
+    private static Double Get_Table47A_Values(Double[] values, Int32 l, Double t, Boolean sine) {
+      //sine true returns El
+      //sine false return Er
+      //Er values start at 60 in the Table47A_El_Er array.
 
-            int nl = l * 4;
+      Int32 nl = l * 4;
 
-            if (sine)
-            {
-                double e = 1;
+      if (sine) {
+        Double e = 1;
 
-                if (Table47A_Arguments[nl + 1] != 0)
-                {
-                    e = 1 - .002516 * t - .0000074 * Math.Pow(t, 2);
+        if (Table47A_Arguments[nl + 1] != 0) {
+          e = 1 - .002516 * t - .0000074 * Math.Pow(t, 2);
 
-                    if (Math.Abs(Table47A_Arguments[nl + 1]) == 2)
-                    {
-                        e *= e;
-                    }
-                }
-                return (Table47A_El_Er[l] * e) * Math.Sin(Table47A_Arguments[nl] * values[0] + Table47A_Arguments[nl + 1] * values[1] +
-                   Table47A_Arguments[nl + 2] * values[2] + Table47A_Arguments[nl + 3] * values[3]);
-            }
-            else
-            {
-                double e = 1;
-                if (Table47A_Arguments[nl + 1] != 0)
-                {
-                    e = 1 - .002516 * t - .0000074 * Math.Pow(t, 2);
-
-                    if (Math.Abs(Table47A_Arguments[nl + 1]) == 2)
-                    {
-                        e *= e;
-                    }
-                }
-                return (Table47A_El_Er[l + 60] * e) * Math.Cos(Table47A_Arguments[nl] * values[0] + Table47A_Arguments[nl + 1] * values[1] +
-                   Table47A_Arguments[nl + 2] * values[2] + Table47A_Arguments[nl + 3] * values[3]);
-            }
+          if (Math.Abs(Table47A_Arguments[nl + 1]) == 2) {
+            e *= e;
+          }
         }
-        private static double Get_Table47B_Values(double[] values, int l, double t)
-        {
-            int nl = l * 4;
-            double e = 1;
+        return Table47A_El_Er[l] * e * Math.Sin(Table47A_Arguments[nl] * values[0] + Table47A_Arguments[nl + 1] * values[1] + Table47A_Arguments[nl + 2] * values[2] + Table47A_Arguments[nl + 3] * values[3]);
+      } else {
+        Double e = 1;
+        if (Table47A_Arguments[nl + 1] != 0) {
+          e = 1 - .002516 * t - .0000074 * Math.Pow(t, 2);
 
-            if (Table47B_Arguments[nl + 1] != 0)
-            {
-                e = 1 - .002516 * t - .0000074 * Math.Pow(t, 2);
-
-                if (Math.Abs(Table47B_Arguments[nl + 1]) == 2)
-                {
-                    e *= e;
-                }
-            }
-            return (Table47B_Eb[l] * e) * Math.Sin(Table47B_Arguments[nl] * values[0] + Table47B_Arguments[nl + 1] * values[1] +
-               Table47B_Arguments[nl + 2] * values[2] + Table47B_Arguments[nl + 3] * values[3]);
+          if (Math.Abs(Table47A_Arguments[nl + 1]) == 2) {
+            e *= e;
+          }
         }
+        return Table47A_El_Er[l + 60] * e * Math.Cos(Table47A_Arguments[nl] * values[0] + Table47A_Arguments[nl + 1] * values[1] + Table47A_Arguments[nl + 2] * values[2] + Table47A_Arguments[nl + 3] * values[3]);
+      }
     }
+    private static Double Get_Table47B_Values(Double[] values, Int32 l, Double t) {
+      Int32 nl = l * 4;
+      Double e = 1;
+
+      if (Table47B_Arguments[nl + 1] != 0) {
+        e = 1 - .002516 * t - .0000074 * Math.Pow(t, 2);
+
+        if (Math.Abs(Table47B_Arguments[nl + 1]) == 2) {
+          e *= e;
+        }
+      }
+      return Table47B_Eb[l] * e * Math.Sin(Table47B_Arguments[nl] * values[0] + Table47B_Arguments[nl + 1] * values[1] + Table47B_Arguments[nl + 2] * values[2] + Table47B_Arguments[nl + 3] * values[3]);
+    }
+  }
 }

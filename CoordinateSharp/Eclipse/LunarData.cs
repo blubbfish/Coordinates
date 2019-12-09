@@ -2,11 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace CoordinateSharp.Eclipse
-{
-    internal class LunarData
-    {
-        static double[] LE1601 = new double[] {
+namespace CoordinateSharp.Eclipse {
+  internal class LunarData {
+    static readonly Double[] LE1601 = new Double[] {
             // 1601  1 18
             2305831.105839,  15.0,   117.3,  0.033, -0.978,  3,
  -1.13536,  0.98335,  0.26794,
@@ -1501,8 +1499,8 @@ namespace CoordinateSharp.Eclipse
  -3.09161, -1.92390, -0.82385,  0.02344,  0.87082,  1.97089,  3.13800,
  337.8589683,   0.48164, -1.510e-04,
   -9.4195702,   0.13945,  3.390e-04 };
-        static double[] LE1701 = new double[]
-         {
+    static readonly Double[] LE1701 = new Double[]
+     {
 // 1701  2 22
 2342390.479120,  23.0,     8.2,  1.428,  0.463,  2,
 -14.82816,  1.02374,  0.27894,
@@ -3039,9 +3037,9 @@ namespace CoordinateSharp.Eclipse
  -2.69377, -1.12653,  0.00000, -0.22214,  0.00000,  0.67926,  2.24840,
    9.1688605,   0.46956, -7.000e-05,
    3.0790301,   0.25315, -2.000e-04
-         };
-        static double[] LE1801 = new double[]
-        {
+     };
+    static readonly Double[] LE1801 = new Double[]
+    {
 // 1801  3 30
 2378949.725057,   5.0,    13.0,  2.857,  1.840,  1,
  -6.52639,  0.96247,  0.26225,
@@ -4536,9 +4534,9 @@ namespace CoordinateSharp.Eclipse
  -1.50705,  0.00000,  0.00000,  0.44149,  0.00000,  0.00000,  2.38825,
   72.2570493,   0.64062, -1.660e-04,
   21.3680795,   0.01873, -1.222e-03
-        };
-        static double[] LE1901 = new double[]
-        {
+    };
+    static readonly Double[] LE1901 = new Double[]
+    {
 // 1901  5  3
 2415508.271269,  19.0,    -0.9,  1.043, -0.033,  3,
 -14.26838,  0.90110,  0.24553,
@@ -5913,9 +5911,9 @@ namespace CoordinateSharp.Eclipse
  -3.17609, -2.02249, -0.94259, -0.05589,  0.83086,  1.91081,  3.06398,
  296.2552752,   0.52835, -1.150e-04,
  -21.2212594,   0.04170,  8.250e-04
-        };
-        static double[] LE2001 = new double[]
-        {
+    };
+    static readonly Double[] LE2001 = new Double[]
+    {
 // 2001  1  9
 2451919.348374,  20.0,    64.1,  2.162,  1.189,  1,
   3.29475,  1.02253,  0.27861,
@@ -7284,9 +7282,9 @@ namespace CoordinateSharp.Eclipse
  -2.37000,  0.00000,  0.00000, -0.25042,  0.00000,  0.00000,  1.86680,
  329.8184696,   0.49978, -6.760e-04,
  -13.3626205,   0.22960,  3.990e-04
-        };
-        static double[] LE2101 = new double[]
-        {
+    };
+    static readonly Double[] LE2101 = new Double[]
+    {
 // 2101  2 14
 2488478.618055,   3.0,   205.1,  2.218,  1.183,  1,
  12.59941,  0.95660,  0.26065,
@@ -8715,9 +8713,9 @@ namespace CoordinateSharp.Eclipse
  -2.67458, -1.48697,  0.00000, -0.25460,  0.00000,  0.97583,  2.16508,
   28.0294400,   0.59158,  9.000e-05,
   10.7019400,   0.15900, -6.160e-04
-        };
-        static double[] LE2201 = new double[]
-        {
+    };
+    static readonly Double[] LE2201 = new Double[]
+    {
             // 2201  3 20
             2525037.204912,  17.0,   444.3,  0.532, -0.560,  3,
   4.85759,  0.90005,  0.24524,
@@ -10230,9 +10228,9 @@ namespace CoordinateSharp.Eclipse
  -2.66449, -1.75055, -0.80821,  0.00923,  0.82677,  1.76918,  2.68236,
   63.0500500,   0.65278,  8.590e-04,
   21.0508309,   0.17085, -1.218e-03
-        };
-        static double[] LE2301 = new double[]
-        {
+    };
+    static readonly Double[] LE2301 = new Double[]
+    {
             // 2301  5 23
 2561625.186996,  16.0,   720.0,  1.809,  0.754,  2,
   8.04603,  0.91666,  0.24977,
@@ -11751,8 +11749,8 @@ namespace CoordinateSharp.Eclipse
  -2.07354, -0.65576,  0.00000,  0.44265,  0.00000,  1.54366,  2.95874,
  101.2753539,   0.59275, -1.730e-04,
   23.7726800,  -0.09243, -1.170e-03
-        };
-        static double[] LE2401 = new double[] {
+    };
+    static readonly Double[] LE2401 = new Double[] {
             // 2401  6 26
 2598183.958214,  11.0,  1059.4,  2.107,  1.139,  1,
   5.31800,  0.99489,  0.27108,
@@ -13176,7 +13174,7 @@ namespace CoordinateSharp.Eclipse
  348.3334732,   0.58130, -3.870e-04,
   -5.5431301,   0.18349,  2.190e-04
         };
-        static double[] LE2501 = new double[] {
+    static readonly Double[] LE2501 = new Double[] {
             // 2501  3  6
 2634595.801080,   7.0,  1461.0,  0.491, -0.599,  3,
  17.93340,  0.90700,  0.24714,
@@ -14541,70 +14539,49 @@ namespace CoordinateSharp.Eclipse
    8.0835801,   0.28700, -3.300e-04
         };
 
-        public static double[] LunarDateData(DateTime d)
-        {
-            //Return combined 100 year arrays so in order to grab Last and Next exlipLE.
-            List<double[]> data = new List<double[]>()
-            {
+    public static Double[] LunarDateData(DateTime d) {
+      //Return combined 100 year arrays so in order to grab Last and Next exlipLE.
+      List<Double[]> data = new List<Double[]>()
+      {
                 LE1601, LE1701,LE1801, LE1901, LE2001,
                 LE2101,LE2201, LE2301, LE2401, LE2501
             };
-            double cent = Math.Floor(d.Year * .01) * 100; //Gets turn of century year.
-            int index = GetIndex(cent); //Gets index for calling data list.
+      Double cent = Math.Floor(d.Year * .01) * 100; //Gets turn of century year.
+      Int32 index = GetIndex(cent); //Gets index for calling data list.
 
-            if (index == -1) { return new double[] { }; } //RETURN EMPTY ARRAY IF OUTSIDE DB RANGE
+      if (index == -1) { return new Double[] { }; } //RETURN EMPTY ARRAY IF OUTSIDE DB RANGE
 
-            //Determine data to LEnd if year is near beginning or end of databaLE
-            int halfCent = d.Year - (int)cent;
-            if (index == 0 || index == data.Count - 1)
-            {
-                if (index == 0)
-                {
-                    if (halfCent <= 50) { return data[0]; }
-                    else { return data[0].Concat(data[1]).ToArray(); }
-                }
-                else
-                {
-                    if (halfCent <= 50) { return data[index - 1].Concat(data[index]).ToArray(); }
-                    else { return data[index]; }
-                }
-            }
-            else
-            {
-                if (halfCent <= 50) { return data[index - 1].Concat(data[index]).ToArray(); }
-                else { return data[index].Concat(data[index + 1]).ToArray(); }
-            }
+      //Determine data to LEnd if year is near beginning or end of databaLE
+      Int32 halfCent = d.Year - (Int32)cent;
+      return index == 0 || index == data.Count - 1 ? index == 0 ? halfCent <= 50 ? data[0] : data[0].Concat(data[1]).ToArray() : halfCent <= 50 ? data[index - 1].Concat(data[index]).ToArray() : data[index] : halfCent <= 50 ? data[index - 1].Concat(data[index]).ToArray() : data[index].Concat(data[index + 1]).ToArray();
 
-        }
-        public static double[] LunarDateData_100Year(DateTime d)
-        {
-            //Return combined 100 year arrays
-            List<double[]> data = new List<double[]>()
-            {
-                LE1601, LE1701,LE1801, LE1901, LE2001,
-                LE2101,LE2201, LE2301, LE2401, LE2501
-            };
-            double cent = Math.Floor(d.Year * .01) * 100; //Gets turn of century year.
-            int index = GetIndex(cent); //Gets index for calling data list.
-
-            if (index == -1) { return new double[] { }; } //RETURN EMPTY ARRAY IF OUTSIDE DB RANGE
-            //Return proper 100 year table.
-            return data[index];
-
-        }
-        private static int GetIndex(double cent)
-        {
-            int dex = 0;
-            int c = Convert.ToInt32(cent * .01);
-            //START CENTURY 16
-            //END CENTRURY 26
-            //AJDUST AS DATABALE GROWS
-            for (int i = 16; i < 26; i++)
-            {
-                if (i == c) { return dex; }
-                dex++;
-            }
-            return -1;
-        }
     }
+    public static Double[] LunarDateData_100Year(DateTime d) {
+      //Return combined 100 year arrays
+      List<Double[]> data = new List<Double[]>()
+      {
+                LE1601, LE1701,LE1801, LE1901, LE2001,
+                LE2101,LE2201, LE2301, LE2401, LE2501
+            };
+      Double cent = Math.Floor(d.Year * .01) * 100; //Gets turn of century year.
+      Int32 index = GetIndex(cent); //Gets index for calling data list.
+
+      if (index == -1) { return new Double[] { }; } //RETURN EMPTY ARRAY IF OUTSIDE DB RANGE
+                                                    //Return proper 100 year table.
+      return data[index];
+
+    }
+    private static Int32 GetIndex(Double cent) {
+      Int32 dex = 0;
+      Int32 c = Convert.ToInt32(cent * .01);
+      //START CENTURY 16
+      //END CENTRURY 26
+      //AJDUST AS DATABALE GROWS
+      for (Int32 i = 16; i < 26; i++) {
+        if (i == c) { return dex; }
+        dex++;
+      }
+      return -1;
+    }
+  }
 }

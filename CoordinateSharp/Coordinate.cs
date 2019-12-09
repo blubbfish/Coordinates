@@ -34,8 +34,7 @@ SOFTWARE.
 using System;
 using System.ComponentModel;
 
-namespace CoordinateSharp
-{
+namespace CoordinateSharp {
   /// <summary>
   /// Observable class for handling all location based information.
   /// This is the main class for CoordinateSharp.
@@ -44,16 +43,14 @@ namespace CoordinateSharp
   /// All information should be pulled from this class to include celestial information
   /// </remarks>
   [Serializable]
-  public class Coordinate : INotifyPropertyChanged
-  {
+  public class Coordinate : INotifyPropertyChanged {
     /// <summary>
     /// Creates an empty Coordinate.
     /// </summary>
     /// <remarks>
     /// Values will need to be provided to latitude/longitude CoordinateParts manually
     /// </remarks>
-    public Coordinate()
-    {
+    public Coordinate() {
       this.FormatOptions = new CoordinateFormatOptions();
       this.geoDate = new DateTime(1900, 1, 1, 0, 0, 0, DateTimeKind.Utc);
       this.latitude = new CoordinatePart(CoordinateType.Lat);
@@ -77,8 +74,7 @@ namespace CoordinateSharp
     /// <remarks>
     /// Values will need to be provided to latitude/longitude CoordinateParts manually
     /// </remarks>
-    internal Coordinate(Double equatorialRadius, Double inverseFlattening, Boolean t)
-    {
+    internal Coordinate(Double equatorialRadius, Double inverseFlattening, Boolean _) {
       this.FormatOptions = new CoordinateFormatOptions();
       this.geoDate = new DateTime(1900, 1, 1, 0, 0, 0, DateTimeKind.Utc);
       this.latitude = new CoordinatePart(CoordinateType.Lat);
@@ -102,8 +98,7 @@ namespace CoordinateSharp
     /// <remarks>
     /// Geodate will default to 1/1/1900 GMT until provided
     /// </remarks>
-    public Coordinate(Double lat, Double longi)
-    {
+    public Coordinate(Double lat, Double longi) {
       this.FormatOptions = new CoordinateFormatOptions();
       this.geoDate = new DateTime(1900, 1, 1, 0, 0, 0, DateTimeKind.Utc);
       this.latitude = new CoordinatePart(lat, CoordinateType.Lat);
@@ -126,8 +121,7 @@ namespace CoordinateSharp
     /// <param name="lat">latitude</param>
     /// <param name="longi">longitude</param>
     /// <param name="date">DateTime (UTC)</param>
-    public Coordinate(Double lat, Double longi, DateTime date)
-    {
+    public Coordinate(Double lat, Double longi, DateTime date) {
       this.FormatOptions = new CoordinateFormatOptions();
       this.latitude = new CoordinatePart(lat, CoordinateType.Lat);
       this.longitude = new CoordinatePart(longi, CoordinateType.Long);
@@ -152,8 +146,7 @@ namespace CoordinateSharp
     /// Values will need to be provided to latitude/longitude manually
     /// </remarks>
     /// <param name="eagerLoad">Eager loading options</param>
-    public Coordinate(EagerLoad eagerLoad)
-    {
+    public Coordinate(EagerLoad eagerLoad) {
       this.FormatOptions = new CoordinateFormatOptions();
       this.geoDate = new DateTime(1900, 1, 1, 0, 0, 0, DateTimeKind.Utc);
       this.latitude = new CoordinatePart(CoordinateType.Lat);
@@ -188,8 +181,7 @@ namespace CoordinateSharp
     /// <param name="lat">latitude</param>
     /// <param name="longi">longitude</param>
     /// <param name="eagerLoad">Eager loading options</param>
-    public Coordinate(Double lat, Double longi, EagerLoad eagerLoad)
-    {
+    public Coordinate(Double lat, Double longi, EagerLoad eagerLoad) {
       this.FormatOptions = new CoordinateFormatOptions();
       this.geoDate = new DateTime(1900, 1, 1, 0, 0, 0, DateTimeKind.Utc);
       this.latitude = new CoordinatePart(lat, CoordinateType.Lat);
@@ -223,8 +215,7 @@ namespace CoordinateSharp
     /// <param name="longi">Decimal format longitude</param>
     /// <param name="date">DateTime you wish to use for celestial calculation</param>
     /// <param name="eagerLoad">Eager loading options</param>
-    public Coordinate(Double lat, Double longi, DateTime date, EagerLoad eagerLoad)
-    {
+    public Coordinate(Double lat, Double longi, DateTime date, EagerLoad eagerLoad) {
       this.FormatOptions = new CoordinateFormatOptions();
       this.latitude = new CoordinatePart(lat, CoordinateType.Lat);
       this.longitude = new CoordinatePart(longi, CoordinateType.Long);
@@ -261,8 +252,7 @@ namespace CoordinateSharp
     /// <summary>
     /// Latitudinal Coordinate Part
     /// </summary>
-    public CoordinatePart Latitude
-    {
+    public CoordinatePart Latitude {
       get => this.latitude;
       set {
         if (this.latitude != value) {
@@ -292,8 +282,7 @@ namespace CoordinateSharp
     /// <summary>
     /// Longitudinal Coordinate Part
     /// </summary>
-    public CoordinatePart Longitude
-    {
+    public CoordinatePart Longitude {
       get => this.longitude;
       set {
         if (this.longitude != value) {
@@ -325,8 +314,7 @@ namespace CoordinateSharp
     /// <remarks>
     /// Assumes all times are in UTC
     /// </remarks>
-    public DateTime GeoDate
-    {
+    public DateTime GeoDate {
       get => this.geoDate;
       set {
         if (this.geoDate != value) {
@@ -357,8 +345,7 @@ namespace CoordinateSharp
     /// Uses Ellipsoidal height with no geoid model included.
     /// 0 = Mean Sea Level based on the provided Datum.
     /// </summary>
-    public ECEF ECEF
-    {
+    public ECEF ECEF {
       get => this.ecef;
 
       //Required due to GeoDetic Height
@@ -376,8 +363,7 @@ namespace CoordinateSharp
     /// Used to determine what format the coordinate was parsed from.
     /// Will equal "None" if Coordinate was not initialzed via a TryParse() method.
     /// </summary>
-    public Parse_Format_Type Parse_Format
-    {
+    public Parse_Format_Type Parse_Format {
       get => this.parse_Format;
       internal set {
         if (this.parse_Format != value) {
@@ -399,8 +385,7 @@ namespace CoordinateSharp
     /// <summary>
     /// Initialize UTM and MGRS information (required if eager loading is turned off).
     /// </summary>
-    public void LoadUTM_MGRS_Info()
-    {
+    public void LoadUTM_MGRS_Info() {
       this.UTM = new UniversalTransverseMercator(this.latitude.ToDouble(), this.longitude.ToDouble(), this);
       this.MGRS = new MilitaryGridReferenceSystem(this.UTM);
     }
@@ -431,8 +416,7 @@ namespace CoordinateSharp
     /// Overridden Coordinate ToString() method.
     /// </summary>
     /// <returns>string (formatted).</returns>
-    public override String ToString()
-    {
+    public override String ToString() {
       String latString = this.latitude.ToString();
       String longSting = this.longitude.ToString();
       return latString + " " + longSting;
@@ -444,8 +428,7 @@ namespace CoordinateSharp
     /// </summary>
     /// <param name="options">CoordinateFormatOptions</param>
     /// <returns>Custom formatted coordinate</returns>
-    public String ToString(CoordinateFormatOptions options)
-    {
+    public String ToString(CoordinateFormatOptions options) {
       String latString = this.latitude.ToString(options);
       String longSting = this.longitude.ToString(options);
       return latString + " " + longSting;
@@ -458,8 +441,7 @@ namespace CoordinateSharp
     /// </summary>
     /// <param name="radius">Equatorial Radius</param>
     /// <param name="flat">Inverse Flattening</param>
-    public void Set_Datum(Double radius, Double flat)
-    {
+    public void Set_Datum(Double radius, Double flat) {
       //WGS84
       //RADIUS 6378137.0;
       //FLATTENING 298.257223563;
@@ -487,8 +469,7 @@ namespace CoordinateSharp
     /// <param name="radius">Equatorial Radius</param>
     /// <param name="flat">Inverse Flattening</param>
     /// <param name="cd">Coordinate_Datum</param>
-    public void Set_Datum(Double radius, Double flat, Coordinate_Datum cd)
-    {
+    public void Set_Datum(Double radius, Double flat, Coordinate_Datum cd) {
       //WGS84
       //RADIUS 6378137.0;
       //FLATTENING 298.257223563;
@@ -554,8 +535,7 @@ namespace CoordinateSharp
     /// //New Coordinate - N 25º 4' 54.517" E 24º 57' 29.189"
     /// </code>
     /// </example>
-    public void Move(Double distance, Double bearing, Shape shape)
-    {
+    public void Move(Double distance, Double bearing, Shape shape) {
       //Convert to Radians for formula
       Double lat1 = this.latitude.ToRadians();
       Double lon1 = this.longitude.ToRadians();
@@ -605,8 +585,7 @@ namespace CoordinateSharp
     /// //New Coordinate - N 24º 56' 21.526" E 25º 4' 23.944"
     /// </code>
     /// </example>
-    public void Move(Coordinate target, Double distance, Shape shape)
-    {
+    public void Move(Coordinate target, Double distance, Shape shape) {
       Distance d = new Distance(this, target, shape);
       //Convert to Radians for formula
       Double lat1 = this.latitude.ToRadians();
@@ -656,8 +635,7 @@ namespace CoordinateSharp
     /// //New Coordinate - N 25º 4' 54.517" E 24º 57' 29.189"
     /// </code>
     /// </example>
-    public void Move(Distance distance, Double bearing, Shape shape)
-    {
+    public void Move(Distance distance, Double bearing, Shape shape) {
       //Convert to Radians for formula
       Double lat1 = this.latitude.ToRadians();
       Double lon1 = this.longitude.ToRadians();
@@ -708,8 +686,7 @@ namespace CoordinateSharp
     /// //New Coordinate - N 24º 56' 21.526" E 25º 4' 23.944"
     /// </code>
     /// </example>
-    public void Move(Coordinate target, Distance distance, Shape shape)
-    {
+    public void Move(Coordinate target, Distance distance, Shape shape) {
       Distance d = new Distance(this, target, shape);
       //Convert to Radians for formula
       Double lat1 = this.latitude.ToRadians();
@@ -752,9 +729,7 @@ namespace CoordinateSharp
     /// }
     /// </code>
     /// </example>
-    public static Boolean TryParse(String s, out Coordinate c)
-    {
-      c = null;
+    public static Boolean TryParse(String s, out Coordinate c) {
       if (FormatFinder.TryParse(s, CartesianType.Cartesian, out c)) {
         Parse_Format_Type pft = c.Parse_Format;
         c = new Coordinate(c.Latitude.ToDouble(), c.Longitude.ToDouble()) {
@@ -781,9 +756,7 @@ namespace CoordinateSharp
     /// }
     /// </code>
     /// </example>
-    public static Boolean TryParse(String s, DateTime geoDate, out Coordinate c)
-    {
-      c = null;
+    public static Boolean TryParse(String s, DateTime geoDate, out Coordinate c) {
       if (FormatFinder.TryParse(s, CartesianType.Cartesian, out c)) {
         Parse_Format_Type pft = c.Parse_Format;
         c = new Coordinate(c.Latitude.ToDouble(), c.Longitude.ToDouble(), geoDate) {
@@ -810,9 +783,7 @@ namespace CoordinateSharp
     /// }
     /// </code>
     /// </example>
-    public static Boolean TryParse(String s, CartesianType ct, out Coordinate c)
-    {
-      c = null;
+    public static Boolean TryParse(String s, CartesianType ct, out Coordinate c) {
       if (FormatFinder.TryParse(s, ct, out c)) {
         Parse_Format_Type pft = c.Parse_Format;
         if (ct == CartesianType.ECEF) {
@@ -845,9 +816,7 @@ namespace CoordinateSharp
     /// }
     /// </code>
     /// </example>
-    public static Boolean TryParse(String s, DateTime geoDate, CartesianType ct, out Coordinate c)
-    {
-      c = null;
+    public static Boolean TryParse(String s, DateTime geoDate, CartesianType ct, out Coordinate c) {
       if (FormatFinder.TryParse(s, ct, out c)) {
         Parse_Format_Type pft = c.Parse_Format;
         if (ct == CartesianType.ECEF) {
@@ -872,8 +841,7 @@ namespace CoordinateSharp
     /// Notify property changed
     /// </summary>
     /// <param name="propName">Property name</param>
-    public void NotifyPropertyChanged(String propName)
-    {
+    public void NotifyPropertyChanged(String propName) {
       switch (propName) {
         case "CelestialInfo":
           if (!this.EagerLoadSettings.Celestial || this.CelestialInfo == null) { return; } //Prevent Null Exceptions and calls while eagerloading is off
@@ -913,8 +881,7 @@ namespace CoordinateSharp
   /// Objects can be passed to Coordinate object Latitude and Longitude properties.
   /// </remarks>
   [Serializable]
-  public class CoordinatePart : INotifyPropertyChanged
-  {
+  public class CoordinatePart : INotifyPropertyChanged {
     //Defaults:
     //Format: Degrees Minutes Seconds
     //Rounding: Dependent upon selected format
@@ -941,8 +908,7 @@ namespace CoordinateSharp
     /// <summary>
     /// Observable decimal format coordinate.
     /// </summary>
-    public Double DecimalDegree
-    {
+    public Double DecimalDegree {
       get => this.decimalDegree;
       set {
         //If changing, notify the needed property changes
@@ -1018,8 +984,7 @@ namespace CoordinateSharp
     /// <summary>
     /// Observable decimal format minute.
     /// </summary>
-    public Double DecimalMinute
-    {
+    public Double DecimalMinute {
       get => this.decimalMinute;
       set {
         if (this.decimalMinute != value) {
@@ -1048,7 +1013,7 @@ namespace CoordinateSharp
 
           Decimal newDM = decValue / 60; //divide decimalMinute by 60 to get storage value
           Decimal newDD = this.degrees + newDM;//Add new decimal value to the floor degree value to get new decimalDegree;
-          if (this.decimalDegree < 0) { newDD = newDD * -1; } //Restore negative if needed
+          if (this.decimalDegree < 0) { newDD *= -1; } //Restore negative if needed
 
           this.decimalDegree = Convert.ToDouble(newDD);  //Convert back to double for storage                      
 
@@ -1064,8 +1029,7 @@ namespace CoordinateSharp
     /// <summary>
     /// Observable coordinate degree.
     /// </summary>
-    public Int32 Degrees
-    {
+    public Int32 Degrees {
       get => this.degrees;
       set {
         //Validate Value
@@ -1105,8 +1069,7 @@ namespace CoordinateSharp
     /// <summary>
     /// Observable coordinate minute.
     /// </summary>
-    public Int32 Minutes
-    {
+    public Int32 Minutes {
       get => this.minutes;
       set {
         if (this.minutes != value) {
@@ -1114,9 +1077,9 @@ namespace CoordinateSharp
                                          //Validate the minutes
           Decimal vMin = Convert.ToDecimal(value);
           if (this.type == CoordinateType.Lat) {
-            if (this.degrees + (vMin / 60) > 90) { throw new ArgumentOutOfRangeException("Degrees out of range", "Latitudinal degrees cannot be greater than 90"); }
+            if (this.degrees + vMin / 60 > 90) { throw new ArgumentOutOfRangeException("Degrees out of range", "Latitudinal degrees cannot be greater than 90"); }
           } else {
-            if (this.degrees + (vMin / 60) > 180) { throw new ArgumentOutOfRangeException("Degrees out of range", "Longitudinal degrees cannot be greater than 180"); }
+            if (this.degrees + vMin / 60 > 180) { throw new ArgumentOutOfRangeException("Degrees out of range", "Longitudinal degrees cannot be greater than 180"); }
           }
           if (value >= 60) {
             throw new ArgumentOutOfRangeException("Minutes out of range", "Minutes cannot be greater than or equal to 60");
@@ -1154,8 +1117,7 @@ namespace CoordinateSharp
     /// <summary>
     /// Observable coordinate second.
     /// </summary>
-    public Double Seconds
-    {
+    public Double Seconds {
       get => this.seconds;
       set {
         if (value < 0) { value *= -1; }//Adjust accidental negative input
@@ -1182,9 +1144,9 @@ namespace CoordinateSharp
           this.seconds = value;
 
 
-          Double degABS = Math.Abs(this.decimalDegree); //Make decimalDegree positive
-          Double degFloor = Math.Truncate(degABS); //Truncate the number left of the decimal
-          Decimal f = Convert.ToDecimal(degFloor); //Convert to decimal to keep precision
+          //Double degABS = Math.Abs(this.decimalDegree); //Make decimalDegree positive
+          //Double degFloor = Math.Truncate(degABS); //Truncate the number left of the decimal
+          //Decimal f = Convert.ToDecimal(degFloor); //Convert to decimal to keep precision
 
           Decimal secs = Convert.ToDecimal(this.seconds); //Convert seconds to decimal for calculations
           secs /= 60; //Convert to storage format
@@ -1207,8 +1169,7 @@ namespace CoordinateSharp
     /// <summary>
     /// Observable coordinate position.
     /// </summary>
-    public CoordinatesPosition Position
-    {
+    public CoordinatesPosition Position {
       get => this.position;
       set {
         if (this.position != value) {
@@ -1231,8 +1192,7 @@ namespace CoordinateSharp
     /// <param name="t">CoordinateType</param>
     /// <param name="c">Parent Coordinate object</param>
     [Obsolete("Method is deprecated. You no longer need to pass a Coordinate object through the constructor.")]
-    public CoordinatePart(CoordinateType t, Coordinate c)
-    {
+    public CoordinatePart(CoordinateType t, Coordinate c) {
       this.parent = c;
       this.type = t;
       this.decimalDegree = 0;
@@ -1248,8 +1208,7 @@ namespace CoordinateSharp
     /// <param name="t">Coordinate type</param>
     /// <param name="c">Parent Coordinate object</param>
     [Obsolete("Method is deprecated. You no longer need to pass a Coordinate object through the constructor.")]
-    public CoordinatePart(Double value, CoordinateType t, Coordinate c)
-    {
+    public CoordinatePart(Double value, CoordinateType t, Coordinate c) {
       this.parent = c;
       this.type = t;
 
@@ -1287,8 +1246,7 @@ namespace CoordinateSharp
     /// <param name="pos">Coordinate Part Position</param>
     /// <param name="c">Parent Coordinate</param>
     [Obsolete("Method is deprecated. You no longer need to pass a Coordinate object through the constructor.")]
-    public CoordinatePart(Int32 deg, Int32 min, Double sec, CoordinatesPosition pos, Coordinate c)
-    {
+    public CoordinatePart(Int32 deg, Int32 min, Double sec, CoordinatesPosition pos, Coordinate c) {
       this.parent = c;
       this.type = pos == CoordinatesPosition.N || pos == CoordinatesPosition.S ? CoordinateType.Lat : CoordinateType.Long;
 
@@ -1308,12 +1266,12 @@ namespace CoordinateSharp
       minD += secD; //Decimal Minutes
 
       if (this.type == CoordinateType.Long) {
-        if (deg + (minD / 60) > 180) { throw new ArgumentOutOfRangeException("Degrees out of range", "Longitudinal Degrees cannot be greater than 180."); }
+        if (deg + minD / 60 > 180) { throw new ArgumentOutOfRangeException("Degrees out of range", "Longitudinal Degrees cannot be greater than 180."); }
       } else {
-        if (deg + (minD / 60) > 90) { throw new ArgumentOutOfRangeException("Degrees out of range", "Latitudinal Degrees cannot be greater than 90."); }
+        if (deg + minD / 60 > 90) { throw new ArgumentOutOfRangeException("Degrees out of range", "Latitudinal Degrees cannot be greater than 90."); }
       }
       this.decimalMinute = Convert.ToDouble(minD);
-      Decimal dd = Convert.ToDecimal(deg) + (minD / 60);
+      Decimal dd = Convert.ToDecimal(deg) + minD / 60;
 
 
       if (pos == CoordinatesPosition.S || pos == CoordinatesPosition.W) {
@@ -1329,8 +1287,7 @@ namespace CoordinateSharp
     /// <param name="pos">Coordinate Part Position</param>
     /// <param name="c">Parent Coordinate object</param>
     [Obsolete("Method is deprecated. You no longer need to pass a Coordinate object through the constructor.")]
-    public CoordinatePart(Int32 deg, Double minSec, CoordinatesPosition pos, Coordinate c)
-    {
+    public CoordinatePart(Int32 deg, Double minSec, CoordinatesPosition pos, Coordinate c) {
       this.parent = c;
 
       this.type = pos == CoordinatesPosition.N || pos == CoordinatesPosition.S ? CoordinateType.Lat : CoordinateType.Long;
@@ -1341,9 +1298,9 @@ namespace CoordinateSharp
       if (minSec >= 60) { throw new ArgumentOutOfRangeException("Minutes out of range", "Minutes cannot be greater than or equal to 60."); }
 
       if (this.type == CoordinateType.Lat) {
-        if (deg + (minSec / 60) > 90) { throw new ArgumentOutOfRangeException("Degree out of range", "Latitudinal degrees cannot be greater than 90."); }
+        if (deg + minSec / 60 > 90) { throw new ArgumentOutOfRangeException("Degree out of range", "Latitudinal degrees cannot be greater than 90."); }
       } else {
-        if (deg + (minSec / 60) > 180) { throw new ArgumentOutOfRangeException("Degree out of range", "Longitudinal degrees cannot be greater than 180."); }
+        if (deg + minSec / 60 > 180) { throw new ArgumentOutOfRangeException("Degree out of range", "Longitudinal degrees cannot be greater than 180."); }
       }
       this.degrees = deg;
       this.decimalMinute = minSec;
@@ -1356,7 +1313,7 @@ namespace CoordinateSharp
       sec *= 60;
       Decimal secD = Convert.ToDecimal(sec);
       this.seconds = Convert.ToDouble(secD);
-      Decimal dd = deg + (minD / 60);
+      Decimal dd = deg + minD / 60;
 
       if (pos == CoordinatesPosition.S || pos == CoordinatesPosition.W) {
         dd *= -1;
@@ -1368,8 +1325,7 @@ namespace CoordinateSharp
     /// Creates an empty CoordinatePart.
     /// </summary>
     /// <param name="t">CoordinateType</param>
-    public CoordinatePart(CoordinateType t)
-    {
+    public CoordinatePart(CoordinateType t) {
       this.type = t;
       this.decimalDegree = 0;
       this.degrees = 0;
@@ -1382,8 +1338,7 @@ namespace CoordinateSharp
     /// </summary>
     /// <param name="value">Coordinate decimal value</param>
     /// <param name="t">Coordinate type</param>
-    public CoordinatePart(Double value, CoordinateType t)
-    {
+    public CoordinatePart(Double value, CoordinateType t) {
       this.type = t;
 
       if (this.type == CoordinateType.Long) {
@@ -1418,8 +1373,7 @@ namespace CoordinateSharp
     /// <param name="min">Minutes</param>
     /// <param name="sec">Seconds</param>
     /// <param name="pos">Coordinate Part Position</param>
-    public CoordinatePart(Int32 deg, Int32 min, Double sec, CoordinatesPosition pos)
-    {
+    public CoordinatePart(Int32 deg, Int32 min, Double sec, CoordinatesPosition pos) {
       this.type = pos == CoordinatesPosition.N || pos == CoordinatesPosition.S ? CoordinateType.Lat : CoordinateType.Long;
 
       if (deg < 0) { throw new ArgumentOutOfRangeException("Degrees out of range", "Degrees cannot be less than 0."); }
@@ -1438,12 +1392,12 @@ namespace CoordinateSharp
       minD += secD; //Decimal Minutes
 
       if (this.type == CoordinateType.Long) {
-        if (deg + (minD / 60) > 180) { throw new ArgumentOutOfRangeException("Degrees out of range", "Longitudinal Degrees cannot be greater than 180."); }
+        if (deg + minD / 60 > 180) { throw new ArgumentOutOfRangeException("Degrees out of range", "Longitudinal Degrees cannot be greater than 180."); }
       } else {
-        if (deg + (minD / 60) > 90) { throw new ArgumentOutOfRangeException("Degrees out of range", "Latitudinal Degrees cannot be greater than 90."); }
+        if (deg + minD / 60 > 90) { throw new ArgumentOutOfRangeException("Degrees out of range", "Latitudinal Degrees cannot be greater than 90."); }
       }
       this.decimalMinute = Convert.ToDouble(minD);
-      Decimal dd = Convert.ToDecimal(deg) + (minD / 60);
+      Decimal dd = Convert.ToDecimal(deg) + minD / 60;
 
 
       if (pos == CoordinatesPosition.S || pos == CoordinatesPosition.W) {
@@ -1457,8 +1411,7 @@ namespace CoordinateSharp
     /// <param name="deg">Degrees</param>
     /// <param name="minSec">Decimal Minutes</param> 
     /// <param name="pos">Coordinate Part Position</param>
-    public CoordinatePart(Int32 deg, Double minSec, CoordinatesPosition pos)
-    {
+    public CoordinatePart(Int32 deg, Double minSec, CoordinatesPosition pos) {
       this.type = pos == CoordinatesPosition.N || pos == CoordinatesPosition.S ? CoordinateType.Lat : CoordinateType.Long;
 
       if (deg < 0) { throw new ArgumentOutOfRangeException("Degree out of range", "Degree cannot be less than 0."); }
@@ -1467,9 +1420,9 @@ namespace CoordinateSharp
       if (minSec >= 60) { throw new ArgumentOutOfRangeException("Minutes out of range", "Minutes cannot be greater than or equal to 60."); }
 
       if (this.type == CoordinateType.Lat) {
-        if (deg + (minSec / 60) > 90) { throw new ArgumentOutOfRangeException("Degree out of range", "Latitudinal degrees cannot be greater than 90."); }
+        if (deg + minSec / 60 > 90) { throw new ArgumentOutOfRangeException("Degree out of range", "Latitudinal degrees cannot be greater than 90."); }
       } else {
-        if (deg + (minSec / 60) > 180) { throw new ArgumentOutOfRangeException("Degree out of range", "Longitudinal degrees cannot be greater than 180."); }
+        if (deg + minSec / 60 > 180) { throw new ArgumentOutOfRangeException("Degree out of range", "Longitudinal degrees cannot be greater than 180."); }
       }
       this.degrees = deg;
       this.decimalMinute = minSec;
@@ -1482,7 +1435,7 @@ namespace CoordinateSharp
       sec *= 60;
       Decimal secD = Convert.ToDecimal(sec);
       this.seconds = Convert.ToDouble(secD);
-      Decimal dd = deg + (minD / 60);
+      Decimal dd = deg + minD / 60;
 
       if (pos == CoordinatesPosition.S || pos == CoordinatesPosition.W) {
         dd *= -1;
@@ -1513,46 +1466,25 @@ namespace CoordinateSharp
     /// </summary>
     /// <param name="options">CoordinateFormatOptions</param>
     /// <returns>Formatted coordinate part string</returns>
-    private String FormatString(CoordinateFormatOptions options)
-    {
-      ToStringType type = ToStringType.Degree_Minute_Second;
-      Int32? rounding = null;
-      Boolean lead = false;
-      Boolean trail = false;
-      Boolean hyphen = false;
-      Boolean symbols = true;
-      Boolean degreeSymbol = true;
-      Boolean minuteSymbol = true;
-      Boolean secondsSymbol = true;
-      Boolean positionFirst = true;
-
+    private String FormatString(CoordinateFormatOptions options) {
       #region Assign Formatting Rules
-      switch (options.Format) {
-        case CoordinateFormatType.Degree_Minutes_Seconds:
-          type = ToStringType.Degree_Minute_Second;
-          break;
-        case CoordinateFormatType.Degree_Decimal_Minutes:
-          type = ToStringType.Degree_Decimal_Minute;
-          break;
-        case CoordinateFormatType.Decimal_Degree:
-          type = ToStringType.Decimal_Degree;
-          break;
-        case CoordinateFormatType.Decimal:
-          type = ToStringType.Decimal;
-          break;
-        default:
-          type = ToStringType.Degree_Minute_Second;
-          break;
-      }
-      rounding = options.Round;
-      lead = options.Display_Leading_Zeros;
-      trail = options.Display_Trailing_Zeros;
-      symbols = options.Display_Symbols;
-      degreeSymbol = options.Display_Degree_Symbol;
-      minuteSymbol = options.Display_Minute_Symbol;
-      secondsSymbol = options.Display_Seconds_Symbol;
-      hyphen = options.Display_Hyphens;
-      positionFirst = options.Position_First;
+      ToStringType type = options.Format switch
+      {
+        CoordinateFormatType.Degree_Minutes_Seconds => ToStringType.Degree_Minute_Second,
+        CoordinateFormatType.Degree_Decimal_Minutes => ToStringType.Degree_Decimal_Minute,
+        CoordinateFormatType.Decimal_Degree => ToStringType.Decimal_Degree,
+        CoordinateFormatType.Decimal => ToStringType.Decimal,
+        _ => ToStringType.Degree_Minute_Second,
+      };
+      Int32? rounding = options.Round;
+      Boolean lead = options.Display_Leading_Zeros;
+      Boolean trail = options.Display_Trailing_Zeros;
+      Boolean symbols = options.Display_Symbols;
+      Boolean degreeSymbol = options.Display_Degree_Symbol;
+      Boolean minuteSymbol = options.Display_Minute_Symbol;
+      Boolean secondsSymbol = options.Display_Seconds_Symbol;
+      Boolean hyphen = options.Display_Hyphens;
+      Boolean positionFirst = options.Position_First;
       #endregion
 
       switch (type) {
@@ -1576,8 +1508,7 @@ namespace CoordinateSharp
       return String.Empty;
     }
     //DMS Coordinate Format
-    private String ToDegreeMinuteSecondString(Int32 rounding, Boolean lead, Boolean trail, Boolean symbols, Boolean degreeSymbol, Boolean minuteSymbol, Boolean secondSymbol, Boolean hyphen, Boolean positionFirst)
-    {
+    private String ToDegreeMinuteSecondString(Int32 rounding, Boolean lead, Boolean trail, Boolean symbols, Boolean degreeSymbol, Boolean minuteSymbol, Boolean secondSymbol, Boolean hyphen, Boolean positionFirst) {
 
       String leadString = this.Leading_Trailing_Format(lead, false, rounding, this.Position);
       String d = String.Format(leadString, this.Degrees); // Degree String
@@ -1602,8 +1533,7 @@ namespace CoordinateSharp
         : d + ds + hs + minute + ms + hs + second + ss + hs + this.Position.ToString();
     }
     //DDM Coordinate Format
-    private String ToDegreeDecimalMinuteString(Int32 rounding, Boolean lead, Boolean trail, Boolean symbols, Boolean degreeSymbol, Boolean minuteSymbol, Boolean hyphen, Boolean positionFirst)
-    {
+    private String ToDegreeDecimalMinuteString(Int32 rounding, Boolean lead, Boolean trail, Boolean symbols, Boolean degreeSymbol, Boolean minuteSymbol, Boolean hyphen, Boolean positionFirst) {
       String leadString = "{0:0";
       if (lead) {
         if (this.Position == CoordinatesPosition.E || this.Position == CoordinatesPosition.W) {
@@ -1646,8 +1576,7 @@ namespace CoordinateSharp
 
     }
     ////DD Coordinate Format
-    private String ToDecimalDegreeString(Int32 rounding, Boolean lead, Boolean trail, Boolean symbols, Boolean degreeSymbol, Boolean positionFirst, Boolean hyphen)
-    {
+    private String ToDecimalDegreeString(Int32 rounding, Boolean lead, Boolean trail, Boolean symbols, Boolean degreeSymbol, Boolean positionFirst, Boolean hyphen) {
       String degreeS = "";
       String hyph = " ";
       if (degreeSymbol) { degreeS = "º"; }
@@ -1672,15 +1601,14 @@ namespace CoordinateSharp
       }
       leadTrail += "}";
 
-      Double result = (this.Degrees) + (Convert.ToDouble(this.Minutes)) / 60 + (Convert.ToDouble(this.Seconds)) / 3600;
+      Double result = this.Degrees + Convert.ToDouble(this.Minutes) / 60 + Convert.ToDouble(this.Seconds) / 3600;
       result = Math.Round(result, rounding);
       String d = String.Format(leadTrail, Math.Abs(result));
       return positionFirst ? this.Position.ToString() + hyph + d + degreeS : d + degreeS + hyph + this.Position.ToString();
 
     }
 
-    private String Leading_Trailing_Format(Boolean isLead, Boolean isTrail, Int32 rounding, CoordinatesPosition? p = null)
-    {
+    private String Leading_Trailing_Format(Boolean isLead, Boolean isTrail, Int32 rounding, CoordinatesPosition? p = null) {
       String leadString = "{0:0";
       if (isLead) {
         if (p != null) {
@@ -1706,18 +1634,16 @@ namespace CoordinateSharp
 
     }
 
-    private String FormatError(String argument, String rule) => "'" + argument + "' is not a valid argument for string format rule: " + rule + ".";
+    //private String FormatError(String argument, String rule) => "'" + argument + "' is not a valid argument for string format rule: " + rule + ".";
 
-    private enum ToStringType
-    {
+    private enum ToStringType {
       Decimal_Degree, Degree_Decimal_Minute, Degree_Minute_Second, Decimal
     }
     /// <summary>
     /// Notify the correct properties and parent properties.
     /// </summary>
     /// <param name="p">Property Type</param>
-    private void NotifyProperties(PropertyTypes p)
-    {
+    private void NotifyProperties(PropertyTypes p) {
       switch (p) {
         case PropertyTypes.DecimalDegree:
           this.NotifyPropertyChanged("DecimalDegree");
@@ -1786,8 +1712,7 @@ namespace CoordinateSharp
     /// <summary>
     /// Used for notifying the correct properties.
     /// </summary>
-    private enum PropertyTypes
-    {
+    private enum PropertyTypes {
       DecimalDegree, DecimalMinute, Position, Degree, Minute, Second, FormatChange
     }
 
@@ -1811,12 +1736,7 @@ namespace CoordinateSharp
     /// }
     /// </code>
     /// </example>
-    public static Boolean TryParse(String s, out CoordinatePart cp)
-    {
-      cp = null;
-
-      return FormatFinder_CoordPart.TryParse(s, out cp) ? true : false;
-    }
+    public static Boolean TryParse(String s, out CoordinatePart cp) => FormatFinder_CoordPart.TryParse(s, out cp) ? true : false;
     /// <summary>
     /// Attempts to parse a string into a CoordinatePart. 
     /// </summary>
@@ -1833,9 +1753,7 @@ namespace CoordinateSharp
     /// }
     /// </code>
     /// </example>
-    public static Boolean TryParse(String s, CoordinateType t, out CoordinatePart cp)
-    {
-      cp = null;
+    public static Boolean TryParse(String s, CoordinateType t, out CoordinatePart cp) {
       //Comma at beginning parses to long
       //Asterik forces lat
       s = t == CoordinateType.Long ? "," + s : "*" + s;

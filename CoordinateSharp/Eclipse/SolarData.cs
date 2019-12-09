@@ -2,13 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace CoordinateSharp.Eclipse
-{
-    internal class SolarData
-    {
-        //ECLIPSE DATA FROM 1701-2400
-        static double[] SE1601 = new double[]
-        {          
+namespace CoordinateSharp.Eclipse {
+  internal class SolarData {
+    //ECLIPSE DATA FROM 1701-2400
+    static readonly Double[] SE1601 = new Double[]
+    {          
           // 1601  1  4
           2305817.017109, 12.0, -4.0, 4.0, 117.4, 117.4,
             -0.2585420, 0.5087563, -7.100e-06, -6.160e-06,
@@ -2241,9 +2239,9 @@ namespace CoordinateSharp.Eclipse
              0.5346340, 0.0000437, -1.270e-05,
             -0.0114460, 0.0000434, -1.270e-05,
              0.0046524, 0.0046293
-          };
-        static double[] SE1701 = new double[]
-        {
+      };
+    static readonly Double[] SE1701 = new Double[]
+    {
             // 1701  2  7
             2342375.461729,  23.0,  -4.0,   4.0,     8.2,     8.2,
   -0.1836620,   0.4942406, -1.910e-05, -5.580e-06,
@@ -4504,8 +4502,8 @@ namespace CoordinateSharp.Eclipse
   -0.0039760,  -0.0000963, -1.230e-05,
    0.0046973,   0.0046739
 };
-        static double[] SE1801 = new double[] 
-        {
+    static readonly Double[] SE1801 = new Double[]
+    {
             // 1801  3 14
 2378934.156652,  16.0,  -4.0,   4.0,    13.0,    13.0,
    0.8100150,   0.4830337, -6.270e-05, -6.820e-06,
@@ -6684,8 +6682,8 @@ namespace CoordinateSharp.Eclipse
    0.5676560,  -0.0000826, -1.030e-05,
    0.0214110,  -0.0000822, -1.030e-05,
    0.0047365,   0.0047129};
-        static double[] SE1901 = new double[]
-        {
+    static readonly Double[] SE1901 = new Double[]
+    {
           // 1901  5 18
           2415522.731807, 6.0, -4.0, 4.0, -0.9, -0.9,
              0.3000790, 0.5746928, -4.400e-06, -9.600e-06,
@@ -8738,9 +8736,9 @@ namespace CoordinateSharp.Eclipse
              0.5730920, 0.0000514, -1.000e-05,
              0.0268200, 0.0000511, -1.000e-05,
              0.0047553, 0.0047316
-        };
-        static double[] SE2001 = new double[]
-        {
+    };
+    static readonly Double[] SE2001 = new Double[]
+    {
           // 2001  6 21
           2452082.003314, 12.0, -4.0, 4.0, 64.2, 64.2,
              0.0103400, 0.5653861, 2.920e-05, -8.860e-06,
@@ -10757,9 +10755,9 @@ namespace CoordinateSharp.Eclipse
              0.5398730, -0.0001031, -1.210e-05,
             -0.0062330, -0.0001026, -1.200e-05,
              0.0046346, 0.0046116
-        };
-        static double[] SE2101 = new double[] 
-        {
+    };
+    static readonly Double[] SE2101 = new Double[]
+    {
             // 2101  2 28
 2488492.594741,   2.0,  -4.0,   4.0,   205.2,   205.2,
   -0.5934920,   0.4746287, -1.290e-05, -6.230e-06,
@@ -12875,9 +12873,9 @@ namespace CoordinateSharp.Eclipse
    0.5652510,  -0.0000740, -1.020e-05,
    0.0190180,  -0.0000736, -1.010e-05,
    0.0046769,   0.0046536
-        };
-        static double[] SE2201 = new double[] 
-        {
+    };
+    static readonly Double[] SE2201 = new Double[]
+    {
             // 2201  4  4
 2525051.763849,   6.0,  -4.0,   4.0,   444.4,   444.4,
   -0.1405310,   0.5551418,  1.180e-05, -9.340e-06,
@@ -15110,9 +15108,9 @@ namespace CoordinateSharp.Eclipse
    0.5747280,   0.0000236, -9.900e-06,
    0.0284480,   0.0000235, -9.800e-06,
    0.0047462,   0.0047226
-        };
-        static double[] SE2301 = new double[] 
-        {
+    };
+    static readonly Double[] SE2301 = new Double[]
+    {
             // 2301  5  9
 2561611.084014,  14.0,  -4.0,   4.0,   719.9,   719.9,
    0.2556460,   0.5255338,  4.360e-05, -8.080e-06,
@@ -17345,8 +17343,8 @@ namespace CoordinateSharp.Eclipse
    0.5389710,  -0.0001064, -1.190e-05,
   -0.0071310,  -0.0001059, -1.190e-05,
    0.0046006,   0.0045776
-        };
-        static double[] SE2401 = new double[] {
+    };
+    static readonly Double[] SE2401 = new Double[] {
             // 2401  1 14
 2598021.427310,  22.0,  -4.0,   4.0,  1057.8,  1057.8,
   -0.2870830,   0.5189539, -4.590e-05, -7.000e-06,
@@ -19481,7 +19479,7 @@ namespace CoordinateSharp.Eclipse
    0.0163870,  -0.0000706, -1.000e-05,
    0.0046201,   0.0045971
         };
-        static double[] SE2501 = new double[] {
+    static readonly Double[] SE2501 = new Double[] {
             // 2501  2 19
 2634580.691215,   5.0,  -4.0,   4.0,  1460.8,  1460.8,
    0.1813720,   0.5619451, -3.330e-05, -9.490e-06,
@@ -21508,71 +21506,50 @@ namespace CoordinateSharp.Eclipse
    0.0248230,   0.0000365, -9.800e-06,
    0.0046944,   0.0046710 };
 
-        public static double[] SolarDateData(DateTime d)
-        {
-            //Return combined 100 year arrays so in order to grab Last and Next exlipse.
-            List<double[]> data = new List<double[]>()
-            {
+    public static Double[] SolarDateData(DateTime d) {
+      //Return combined 100 year arrays so in order to grab Last and Next exlipse.
+      List<Double[]> data = new List<Double[]>()
+      {
                 SE1601, SE1701, SE1801, SE1901, SE2001,
                 SE2101, SE2201, SE2301, SE2401, SE2501
             };
-            double cent = Math.Floor(d.Year * .01) * 100; //Gets turn of century year.
-            int index = GetIndex(cent); //Gets index for calling data list.
+      Double cent = Math.Floor(d.Year * .01) * 100; //Gets turn of century year.
+      Int32 index = GetIndex(cent); //Gets index for calling data list.
 
-            if (index == -1) { return new double[] { };} //RETURN EMPTY ARRAY IF OUTSIDE DB RANGE
+      if (index == -1) { return new Double[] { }; } //RETURN EMPTY ARRAY IF OUTSIDE DB RANGE
 
-            //Determine data to send if year is near beginning or end of database
-            int halfCent = d.Year - (int)cent;
-           
-            if (index == 0 || index == data.Count - 1)
-            {
-                if(index == 0)
-                {
-                    if (halfCent <= 50) { return data[0]; }
-                    else { return data[0].Concat(data[1]).ToArray(); }
-                }
-                else
-                {
-                    if (halfCent <= 50) { return data[index - 1].Concat(data[index]).ToArray(); }
-                    else { return data[index]; }
-                }
-            }
-            else
-            {
-                if (halfCent <= 50) { return data[index - 1].Concat(data[index]).ToArray(); }
-                else { return data[index].Concat(data[index+1]).ToArray(); }
-            }
-      
-        }
-        public static double[] SolarDateData_100Year(DateTime d)
-        {
-            //Return combined 100 year arrays
-            List<double[]> data = new List<double[]>()
-            {
-                SE1601, SE1701, SE1801, SE1901, SE2001,
-                SE2101, SE2201, SE2301, SE2401, SE2501
-            };
-            double cent = Math.Floor(d.Year * .01) * 100; //Gets turn of century year.
-            int index = GetIndex(cent); //Gets index for calling data list.
+      //Determine data to send if year is near beginning or end of database
+      Int32 halfCent = d.Year - (Int32)cent;
 
-            if (index == -1) { return new double[] { }; } //RETURN EMPTY ARRAY IF OUTSIDE DB RANGE
-            //Return proper 100 year table.
-            return data[index];
+      return index == 0 || index == data.Count - 1 ? index == 0 ? halfCent <= 50 ? data[0] : data[0].Concat(data[1]).ToArray() : halfCent <= 50 ? data[index - 1].Concat(data[index]).ToArray() : data[index] : halfCent <= 50 ? data[index - 1].Concat(data[index]).ToArray() : data[index].Concat(data[index + 1]).ToArray();
 
-        }
-        private static int GetIndex(double cent)
-        {
-            int dex = 0;
-            int c = Convert.ToInt32(cent * .01);
-            //START CENTURY 16
-            //END CENTRURY 26
-            //AJDUST AS DATABASE GROWS
-            for(int i = 16; i<26;i++)
-            {
-                if(i == c) { return dex; }
-                dex++;
-            }
-            return -1;
-        }
     }
+    public static Double[] SolarDateData_100Year(DateTime d) {
+      //Return combined 100 year arrays
+      List<Double[]> data = new List<Double[]>()
+      {
+                SE1601, SE1701, SE1801, SE1901, SE2001,
+                SE2101, SE2201, SE2301, SE2401, SE2501
+            };
+      Double cent = Math.Floor(d.Year * .01) * 100; //Gets turn of century year.
+      Int32 index = GetIndex(cent); //Gets index for calling data list.
+
+      if (index == -1) { return new Double[] { }; } //RETURN EMPTY ARRAY IF OUTSIDE DB RANGE
+                                                    //Return proper 100 year table.
+      return data[index];
+
+    }
+    private static Int32 GetIndex(Double cent) {
+      Int32 dex = 0;
+      Int32 c = Convert.ToInt32(cent * .01);
+      //START CENTURY 16
+      //END CENTRURY 26
+      //AJDUST AS DATABASE GROWS
+      for (Int32 i = 16; i < 26; i++) {
+        if (i == c) { return dex; }
+        dex++;
+      }
+      return -1;
+    }
+  }
 }
